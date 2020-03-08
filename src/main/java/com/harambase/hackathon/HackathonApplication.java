@@ -9,14 +9,14 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @EnableCaching
 @SpringBootApplication
-public class PioneerApplication extends SpringBootServletInitializer {
+public class HackathonApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(PioneerApplication.class);
+        return builder.sources(HackathonApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(PioneerApplication.class, args);
+        SpringApplication.run(HackathonApplication.class, args);
     }
 }
