@@ -1,16 +1,20 @@
 import React from 'react';
-import Example from './entry.jsx';
-
+import {BrowserRouter as Router, Switch, Route} from  'react-router-dom';
+import Home from './Components/Home.jsx';
+import time from './Components/TimeRemaining.jsx';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 style={{marginLeft:"30px"}}>
-            Hackathon 2020 冲鸭
-        </h1>
-        <Example/>
-      </header>
-    </div>
+    <Router>
+      <h1 style={{marginLeft:"30px"}}>
+    Hackathon 2020 冲鸭 </h1>
+        <Switch>
+            <Route path="/home" exact component={Home} />
+            <Route path="/time" exact component={time} />
+
+    </Switch>
+
+
+    </Router>
   );
 }
 
