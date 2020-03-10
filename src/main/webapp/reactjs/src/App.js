@@ -1,14 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Example from './entry.jsx';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <h1 style={{marginLeft:"30px"}}>
             Hackathon 2020 冲鸭
-        </p>
+        </h1>
+        <Example/>
       </header>
     </div>
   );
