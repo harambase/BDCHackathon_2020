@@ -2,7 +2,7 @@ package com.harambase.hackathon.server.dao.base;
 
 import com.harambase.hackathon.server.dao.connection.DataServiceConnection;
 import com.harambase.hackathon.server.dao.connection.ResultSetHelper;
-import com.harambase.hackathon.server.pojo.base.Person;
+import com.harambase.hackathon.server.pojo.base.Cities;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PersonDao {
+public class CitiesDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<Person> getPersonBySearch(String search, String type, String status, String role, String maxLength) throws Exception {
+    public List<Cities> getPersonBySearch(String search, String type, String status, String role, String maxLength) throws Exception {
         ResultSet rs = null;
         Connection connection = null;
         Statement stmt = null;
-        List<Person> personList = new ArrayList<>();
+        List<Cities> personList = new ArrayList<>();
         try {
             connection = DataServiceConnection.openDBConnection();
             if (connection == null)
@@ -31,7 +31,7 @@ public class PersonDao {
 
             stmt = connection.createStatement();
 
-            String queryString = "select * from person where 1=1 ";
+            String queryString = "select * from Cities where 1=1 ";
             if (StringUtils.isNotEmpty(type))
                 queryString += "AND type LIKE '%" + type + "%' ";
             if (StringUtils.isNotEmpty(role))
@@ -55,7 +55,7 @@ public class PersonDao {
             logger.info(queryString);
 
             rs = stmt.executeQuery(queryString);
-            personList = ResultSetHelper.getObjectFor(rs, Person.class);
+            personList = ResultSetHelper.getObjectFor(rs, Cities.class);
             return personList;
         } finally {
             if (stmt != null)
@@ -79,7 +79,7 @@ public class PersonDao {
 
             stmt = connection.createStatement();
 
-            String queryString = "SELECT COUNT(*) AS count FROM person WHERE 1=1 ";
+            String queryString = "SELECT COUNT(*) AS count FROM Cities WHERE 1=1 ";
             if (StringUtils.isNotEmpty(type))
                 queryString += "AND type LIKE '%" + type + "%' ";
             if (StringUtils.isNotEmpty(status))
@@ -112,12 +112,12 @@ public class PersonDao {
         }
     }
 
-    public List<Person> getByMapPageSearchOrdered(int currentIndex, int pageSize, String search,
+    public List<Cities> getByMapPageSearchOrdered(int currentIndex, int pageSize, String search,
                                                   String order, String orderColumn, String type, String status, String role) throws Exception {
         ResultSet rs = null;
         Connection connection = null;
         Statement stmt = null;
-        List<Person> personList = new ArrayList<>();
+        List<Cities> personList = new ArrayList<>();
         try {
             connection = DataServiceConnection.openDBConnection();
             if (connection == null)
@@ -125,7 +125,7 @@ public class PersonDao {
 
             stmt = connection.createStatement();
 
-            String queryString = "SELECT * FROM person WHERE 1=1 ";
+            String queryString = "SELECT * FROM Cities WHERE 1=1 ";
             if (StringUtils.isNotEmpty(type))
                 queryString += "AND type LIKE '%" + type + "%' ";
             if (StringUtils.isNotEmpty(status))
@@ -146,7 +146,7 @@ public class PersonDao {
             logger.info(queryString);
 
             rs = stmt.executeQuery(queryString);
-            personList = ResultSetHelper.getObjectFor(rs, Person.class);
+            personList = ResultSetHelper.getObjectFor(rs, Cities.class);
             return personList;
 
         } finally {
